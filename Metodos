@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+	
+int gf_area_ret(int altura, int largura) {
+	
+    return altura * largura;
+    
+}
+
+void gf_imprimir_ret(int altura, int largura) {
+		
+    if (altura < 10 && largura < 10) {
+    	
+        int count_alt = 0;
+        
+        while (count_alt < altura) {
+        	
+            int count_larg = 0;
+            
+            while (count_larg < largura) {
+            	
+                if ((count_alt == 0 || count_alt == altura - 1) && (count_larg == 0 || count_larg == largura - 1)) {
+                	
+                    std::cout << "+"; 
+                    
+                } else if (count_alt == 0 || count_alt == altura - 1) {
+                	
+                    std::cout << "-"; 
+                    
+                } else if (count_larg == 0 || count_larg == largura - 1) {
+                	
+                    std::cout << "|"; 
+                    
+                } else {
+                	
+                    std::cout << " "; 
+                }
+                
+                count_larg++;
+            }
+            
+            std::cout << std::endl;
+            
+            count_alt++;
+        }
+        
+    } else {
+    	
+    	std::cout << "--------------------------------------------" << std::endl;
+        std::cout << "NAO FOI POSSIVEL REPRESENTAR ESTE RETANGULO." << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
+    }
+}
+
+void gf_virar_ret(int altura, int largura) {
+	
+	int aux;
+	
+	aux = altura;
+	altura = largura;
+	largura = aux;
+	
+	gf_imprimir_ret(altura, largura);
+	
+}
+
+int main() {
+	
+    int lv_altura, lv_largura;
+
+	std::cout << "------------------------------" << std::endl;
+    std::cout << "DIGITE A ALTURA DO RETANGULO: ";
+    std::cin >> lv_altura;
+    std::cout << "------------------------------" << std::endl;
+    
+    std::cout << "------------------------------" << std::endl;
+    std::cout<< "DIGITE A LARGURA DO RETANGULO: ";
+    std::cin >> lv_largura;
+    std::cout << "------------------------------" << std::endl;
+
+	std::cout << "---------------------" << std::endl; 
+    std::cout << "AREA DO RETANGULO: " << gf_area_ret(lv_altura, lv_largura) << std::endl;
+    std::cout << "---------------------" << std::endl;
+    
+    std::cout << "-----------" << std::endl; 
+    std::cout << "RETANGULO: " << std::endl;
+    std::cout << "-----------" << std::endl; 
+    std::cout << std::endl;
+    
+    gf_imprimir_ret(lv_altura, lv_largura);
+    
+    std::cout << "------------" << std::endl; 
+    std::cout << "RETANGULO 2: " << std::endl;
+    std::cout << "------------" << std::endl; 
+    std::cout << std::endl;
+    
+    gf_virar_ret(lv_altura, lv_largura);
+
+    return 0;
+    
+}
